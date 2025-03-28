@@ -245,3 +245,32 @@ roc_curve <- roc(model.test$Status, model.test.predicted_prob)
 auc_value <- auc(roc_curve)
 auc_value
 ```
+
+```{r}
+plot(roc_curve, col = "blue", main = paste("ROC Curve (AUC =", round(auc_value, 4), ")"))
+```
+
+```{r}
+
+ Prediction_Classes <- ifelse(model.test.predicted_prob > 0.5, "Left", "Current")
+  conf_matrix <- table(Prediction_Classes, model.test$Status)
+ 
+  accuracy <- sum(diag(conf_matrix)) / sum(conf_matrix) * 100
+accuracy
+```
+
+```{r}
+ Prediction_Classes <- ifelse(model.test.predicted_prob > 0.3, "Left", "Current")
+  conf_matrix <- table(Prediction_Classes, model.test$Status)
+ 
+  accuracy <- sum(diag(conf_matrix)) / sum(conf_matrix) * 100
+accuracy
+```
+
+```{r}
+ Prediction_Classes <- ifelse(model.test.predicted_prob > 0.7, "Left", "Current")
+  conf_matrix <- table(Prediction_Classes, model.test$Status)
+ 
+  accuracy <- sum(diag(conf_matrix)) / sum(conf_matrix) * 100
+accuracy
+```
